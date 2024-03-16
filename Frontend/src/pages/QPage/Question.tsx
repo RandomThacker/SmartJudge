@@ -8,13 +8,14 @@ import {
 import EditorPanel from '@/editor/EditorPanel';
 
 
+import { question1 } from "/home/shivamjain/Code/SmartJudge/Questions/1/Question"
 
 export default function Question() {
   return (
-    <section className='h-screen'>
+    <section className='max-h-[90vh]'>
       <ResizablePanelGroup direction="horizontal">
   <ResizablePanel>
-    <QPanel questionNumber={1} questionDesc='# Hi, *Pluto*!' questionTitle='Two Sum' questionTags={["array"]} />
+      <QPanel questionNumber={1} questionDesc={question1} questionTitle='Two Sum' questionTags={["array"]} />
   </ResizablePanel>
   <ResizableHandle />
   <ResizablePanel>

@@ -1,6 +1,7 @@
 import React from 'react'
 import QTagBar from './QTagBar';
 import ReactMarkdown from 'react-markdown';
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 interface QuestionPage{
     questionTitle : string;
@@ -18,9 +19,11 @@ export default function QPanel({questionTitle,questionDesc,questionTags,question
             </h1>
             <QTagBar tags={questionTags} />
             
+            <ScrollArea className='h-[100%] overflow-visible'>
             <ReactMarkdown>
               {questionDesc}
             </ReactMarkdown>
+            </ScrollArea>
     </div>
   )
 }
