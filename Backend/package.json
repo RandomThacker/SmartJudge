@@ -23,6 +23,7 @@
     "eslint": "^8.57.0",
     "jest": "^29.7.0",
     "nodemon": "^3.1.0",
+    "prisma": "^5.11.0",
     "rimraf": "^5.0.5",
     "supertest": "^6.3.4",
     "ts-jest": "^29.1.2",
@@ -30,7 +31,10 @@
     "typescript": "^5.4.2"
   },
   "dependencies": {
+    "axios": "^1.6.8",
     "dotenv": "^16.4.5",
-    "express": "^4.18.3"
+    "express": "^4.18.3",
+    "lucia": "^3.1.1",
+    "oslo": "^1.1.3"
   }
 }
