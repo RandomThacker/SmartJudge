@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { useNavigate } from 'react-router-dom';
 
 
 const backgroundImages = [
@@ -25,7 +26,7 @@ interface CompetitionCardProps {
 
 export default function CompetitionCard({ competition }: CompetitionCardProps) {
   const { title, schools, date, time } = competition;
-
+  const navi = useNavigate();
   // Limiting the number of displayed schools to 3
   const displayedSchools = schools.slice(0, 3);
   // Truncating extra schools with '...'
@@ -35,7 +36,9 @@ export default function CompetitionCard({ competition }: CompetitionCardProps) {
   const randomBackgroundImage = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
 
   return (
-      <Card className="relative overflow-hidden rounded-lg m-4 p-6 w-[400px]">
+      <Card className="relative overflow-hidden rounded-lg m-4 p-6 w-[400px]"
+     
+      >
         <div
           className="absolute inset-0 bg-cover bg-center z-0"
           style={{
@@ -51,7 +54,11 @@ export default function CompetitionCard({ competition }: CompetitionCardProps) {
             <p className="text-sm mb-2">{displayedSchools.join(", ")}{truncatedSchools}</p>
             <p className="text-sm">{date} {time}</p>
           </div>
-          <Button className="mt-2 bg-blue-500 hover:bg-blue-600">Register</Button>
+          <Button className="mt-2 bg-blue-500 hover:bg-blue-600"
+           onClick={()=>{
+            navi('/events/weekly')
+          }}
+          >Register</Button>
         </div>
       </Card>
   );
