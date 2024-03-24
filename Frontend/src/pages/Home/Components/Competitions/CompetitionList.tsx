@@ -1,44 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import CompetitionCard from './CompetitionCard';
-
-// Define a list of sample competitions
-const competitions = [
-  {
-    id: 1,
-    title: "Weekly Coding Challenge",
-    schools: ["CIT", "CSE", "ECE"],
-    date: "2024-04-15",
-    time: "10:00 AM"
-  },
-  {
-    id: 2,
-    title: "Algorithms Hackathon",
-    schools: ["School X", "School Y", "School Z"],
-    date: "2024-05-20",
-    time: "1:00 PM"
-  },
-  {
-    id: 3,
-    title: "Data Structures Competition",
-    schools: ["School P", "School Q", "School R"],
-    date: "2024-06-01",
-    time: "2:30 PM"
-  },
-  {
-    id: 4,
-    title: "Code Sprint",
-    schools: ["School M", "School N", "School O"],
-    date: "2024-06-10",
-    time: "9:00 AM"
-  },
-  // Add more sample competitions as needed
-];
+import { useRecoilState } from 'recoil';
+import {eventState} from '../../../../../atom/EventsAtom';
 
 export default function CompetitionList() {
+  const [competitionArray, setCompetitionArray] = useRecoilState(eventState);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/events");
+        const events = response.data.events;
+        setCompetitionArray(events);
+      } catch (error) {
+        console.error("Error fetching events:", error);
+        // Handle error, such as displaying an error message to the user
+      }
+    };
+
+    fetchEvents();
+  }, []); // No dependencies needed here
+
   return (
     <div className="flex overflow-x-auto p-3">
-      {competitions.map(competition => (
-        <CompetitionCard key={competition.id} competition={competition} />
+      {competitionArray && competitionArray.map(competition => (
+        <CompetitionCard  competition={competition} />
       ))}
     </div>
   );
