@@ -2,6 +2,7 @@ import React from 'react'
 import QTagBar from './QTagBar';
 import ReactMarkdown from 'react-markdown';
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { Card } from '@/components/ui/card';
 
 interface QuestionPage{
     questionTitle : string;
@@ -13,7 +14,7 @@ interface QuestionPage{
 export default function QPanel({questionTitle,questionDesc,questionTags,questionNumber}:QuestionPage) {
 
   return (
-    <div className='p-4'>
+    <Card className='p-4 m-2'>
      <h1 className='text-4xl font-bold'>
               {questionNumber}.  {questionTitle}
             </h1>
@@ -24,6 +25,6 @@ export default function QPanel({questionTitle,questionDesc,questionTags,question
               {questionDesc}
             </ReactMarkdown>
             </ScrollArea>
-    </div>
+    </Card>
   )
 }

@@ -7,6 +7,8 @@ import Page from "./pages/Home/Page";
 import ProfilePage from "./pages/Profile/ProfilePage";
 import ProblemsPage from "./pages/ProblemSet/ProblemsPage";
 import EventPage from "./pages/Events/EventPage";
+import CreateEventPage from "./pages/CreateEvent/CreateEventPage";
+import SignIn from "./pages/Auth/SignIn";
 
 function App() {
 
@@ -22,6 +24,8 @@ function App() {
     <Route path="/user/:username" element={<ProfilePage  />} />
     <Route path="/problems" element={<ProblemsPage  />} />
     <Route path="/events/:eventname" element={<EventPage  />} />
+    <Route path="/events/create" element={<CreateEventPage  />} />
+    <Route path="/signin" element={<SignIn  />} />
     
     </Routes>
     </> 

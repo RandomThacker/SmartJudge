@@ -9,10 +9,12 @@ import {
     SelectValue,
   } from "@/components/ui/select"
 import Timer from '@/components/custom/Timer';
+import { useRecoilState } from 'recoil';
+import { codeState } from '@/../atom/CodeAtom';
 
   
 export default function TopBarEditorPanel() {
-  
+  const [selectLang,setSelectLang] = useRecoilState(codeState);
   const [onTimer,setOnTimer] = useState(false);
   
   return (
@@ -30,12 +32,23 @@ export default function TopBarEditorPanel() {
         <MdOutlineTimer />
         </Toggle>
 
-        <Select>
+        <Select onValueChange={(data)=>{
+          setSelectLang({
+          ...selectLang,
+          lang : data
+        })
+        console.log(data);
+        console.log(selectLang);
+        
+
+        }}>
   <SelectTrigger className="w-[180px]">
-    <SelectValue placeholder="JavaScript" />
+    <SelectValue placeholder="Language" />
   </SelectTrigger>
   <SelectContent>
-    <SelectItem value="js">Javascript</SelectItem>
+    <SelectItem value="py">Python</SelectItem>
+    <SelectItem value="js">JavaScript</SelectItem>
+  
   </SelectContent>
 </Select>
 
