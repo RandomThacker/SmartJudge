@@ -5,7 +5,7 @@ import { TestTubeDiagonal,Activity } from 'lucide-react'
 
 export default function TestCasePanel() {
   return (
-    <Card className='p-4'>
+    <Card className='p-4 mt-2'>
         <Tabs defaultValue="test cases" className="w-[400px]">
   <TabsList className='p-2'>
     <TabsTrigger value="testcases" className='flex gap-2'> <TestTubeDiagonal className='size-4' strokeWidth={1} /> Test Cases</TabsTrigger>

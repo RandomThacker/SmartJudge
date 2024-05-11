@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { MdOutlineTimer } from "react-icons/md";
 import { Toggle } from "@/components/ui/toggle"
 import {
@@ -11,12 +11,14 @@ import {
 import Timer from '@/components/custom/Timer';
 import { useRecoilState } from 'recoil';
 import { codeState } from '@/../atom/CodeAtom';
+import { useToast } from '@/components/ui/use-toast';
 
   
 export default function TopBarEditorPanel() {
   const [selectLang,setSelectLang] = useRecoilState(codeState);
   const [onTimer,setOnTimer] = useState(false);
-  
+
+
   return (
     <div className='flex justify-between items-center p-3'>
         <div>
@@ -46,7 +48,7 @@ export default function TopBarEditorPanel() {
     <SelectValue placeholder="Language" />
   </SelectTrigger>
   <SelectContent>
-    <SelectItem value="py">Python</SelectItem>
+    <SelectItem value="py" defaultChecked>Python</SelectItem>
     <SelectItem value="js">JavaScript</SelectItem>
   
   </SelectContent>

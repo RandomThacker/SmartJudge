@@ -28,9 +28,11 @@ export default function EventPage() {
   
   const fetchEventInfo = async () => {
     const eventDetailsResp = await axios.get(`${import.meta.env.VITE_SERVER_ROOTURL}/events/${eventname}`);
-    const eventDesc = await axios.get(eventDetailsResp.data.event.description);
+    console.log(eventDetailsResp)
+    const eventDesc = await eventDetailsResp.data.event.description;
+    console.log(eventDesc)
     setEventDetails(eventDetailsResp.data.event);
-    setEventMD(eventDesc.data);
+    setEventMD(eventDesc);
   }
   
   
@@ -44,14 +46,14 @@ export default function EventPage() {
   
   return (
     <section className=' w-full bg-gradient-to-blue'>
-      <div className='flex'>
+      <div className='flex w-screen'>
 
-      <div className='p-4'>
+      <div className='p-4 w-1/2 flex flex-col justify-evenly'>
         <EventImage imgsrc={eventDetails?.image as string} />
         <EventHost />
       </div>
 
-      <div className='p-4'>
+      <div className='p-4 w-1/2 flex flex-col justify-evenly'>
         <h1 className='font-black text-4xl'>{eventDetails?.eventName}</h1>
         <EventDate dateEvent={eventDetails?.date as string} />
         <RegistrationCard />

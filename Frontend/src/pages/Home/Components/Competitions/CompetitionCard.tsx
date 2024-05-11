@@ -23,6 +23,7 @@ interface Hosts {
 }
 
 interface Competition {
+  id:string;
   eventName: string;
   hosts: Hosts[];
   date: string;
@@ -41,9 +42,9 @@ interface CompetitionCardProps {
 }
 
 export default function CompetitionCard({ competition }: CompetitionCardProps) {
-  const { eventName, completed, date, hosts, id } = competition;
+  const { eventName, completed, date, hosts,id } = competition;
 
-
+const eventid = id;
   const navi = useNavigate();
 
   // Limiting the number of displayed schools to 3
@@ -68,9 +69,13 @@ const formattedTime = `${hours}:${minutes}`;
 // Format as "dd:mm:yy"
 const formattedDate = `${day}/${month}/${year}`;
 
+  const handleClick = () => {
+    navi(`/events/${eventid}`);
+  };
+
   return (
     <Card className="relative overflow-hidden rounded-lg m-4 p-6 w-[400px]"
-
+      onClick={handleClick}
     >
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
@@ -96,7 +101,7 @@ const formattedDate = `${day}/${month}/${year}`;
         </div>
         <Button className="mt-2 bg-blue-500 hover:bg-blue-600"
           onClick={() => {
-            navi(`/events/${id}`)
+            navi(`/events/${eventid}`)
           }}
         >Register</Button>
       </div>

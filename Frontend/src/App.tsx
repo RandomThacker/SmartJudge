@@ -9,6 +9,8 @@ import ProblemsPage from "./pages/ProblemSet/ProblemsPage";
 import EventPage from "./pages/Events/EventPage";
 import CreateEventPage from "./pages/CreateEvent/CreateEventPage";
 import SignIn from "./pages/Auth/SignIn";
+import { Toaster } from "@/components/ui/toaster"
+import RecommendationPage from "./pages/Recommendation/RecommendationPage";
 
 function App() {
 
@@ -25,9 +27,14 @@ function App() {
     <Route path="/problems" element={<ProblemsPage  />} />
     <Route path="/events/:eventname" element={<EventPage  />} />
     <Route path="/events/create" element={<CreateEventPage  />} />
+    <Route path="/recommendations" element={<RecommendationPage  />} />
+
     <Route path="/signin" element={<SignIn  />} />
     
     </Routes>
+    <Toaster />
+
+
     </> 
   )
 }
