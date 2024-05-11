@@ -26,15 +26,19 @@ export default function EditorPanel() {
     //   code: codeVal.code,
     //   lang: codeVal.lang
     // });
+    
+    setTimeout(() => {
+      console.log("Running code");
+      setTries(tries+1);
+      // console.log(response);
+      toast({
+        title : "Correct",
+        description : "You are correct",
+      })
+      setIsRun(false);
+        }, 2000);
 
-    console.log("Running code");
-    setTries(tries+1);
-    // console.log(response);
-    toast({
-      title : "Correct",
-      description : "You are correct",
-    })
-    setIsRun(false);
+   
   };
 
   const submitCode = async () => {
@@ -44,12 +48,16 @@ export default function EditorPanel() {
     //   code: codeVal.code,
     //   lang: codeVal.lang
     // });
-    
-    setTries(tries+1);
-    // console.log(response);
-    setIsSubmit(false);
 
-    setIsCorrect(true);
+    setTimeout(() => {
+      setTries(tries+1);
+      // console.log(response);
+      setIsSubmit(false);
+  
+      setIsCorrect(true);   
+     }, 2000);
+
+    
   };
 
   const [tries,setTries] = useState(0);
