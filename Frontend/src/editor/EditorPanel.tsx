@@ -22,14 +22,14 @@ export default function EditorPanel() {
   const runCode = async () => {
     setIsRun(true);
     console.log(codeVal);
-    const response = await axios.post('http://localhost:8000/run', {
-      code: codeVal.code,
-      lang: codeVal.lang
-    });
+    // const response = await axios.post('http://localhost:8000/run', {
+    //   code: codeVal.code,
+    //   lang: codeVal.lang
+    // });
 
     console.log("Running code");
     setTries(tries+1);
-    console.log(response);
+    // console.log(response);
     toast({
       title : "Correct",
       description : "You are correct",
@@ -40,12 +40,13 @@ export default function EditorPanel() {
   const submitCode = async () => {
     setIsSubmit(true);
     console.log(codeVal);
-    const response = await axios.post('http://localhost:8000/run', {
-      code: codeVal.code,
-      lang: codeVal.lang
-    });
+    // const response = await axios.post('http://localhost:8000/run', {
+    //   code: codeVal.code,
+    //   lang: codeVal.lang
+    // });
+    
     setTries(tries+1);
-    console.log(response);
+    // console.log(response);
     setIsSubmit(false);
 
     setIsCorrect(true);
