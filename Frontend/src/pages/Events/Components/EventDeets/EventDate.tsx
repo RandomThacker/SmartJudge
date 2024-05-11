@@ -3,7 +3,7 @@ import { Separator } from '@/components/ui/separator';
 
 function EventBox({ month, date }) {
   return (
-    <div className='rounded-lg flex flex-col items-center '>
+    <div className='rounded-lg flex flex-col items-center border-[1px] border-gray-300 '>
       <div className='px-1 bg-gray-300 text-white rounded-t-lg'>
         {month.toUpperCase()}
       </div>
@@ -37,7 +37,7 @@ export default function EventDate({ dateEvent }: { dateEvent: string }) {
   }
 
   return (
-    <div className='flex gap-3 my-3 ml-2'>
+    <div className='flex gap-3 my-3 ml-2 '>
       <EventBox month={month} date={date} />
 
       <div className='flex flex-col'>

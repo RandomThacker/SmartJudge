@@ -12,12 +12,13 @@ import AWS from 'aws-sdk'
 import axios from 'axios';
 import TestCasePanel from './Components/TestCasePanel';
 // import {Question1} from '../../../../Questions/Add/Question'
-
+import { useToast } from '@/components/ui/use-toast';
 export default function Question() {
+  const {toast} = useToast();
   const params = useParams()
   const question = params.question;
 
-  // const [defaultCode,setDefaultCode] = useState(null);
+  // const [defaultCode,setDefaultCode] = useState<string>();
 
   // const s3Bucket = import.meta.env.VITE_S3BUCKETNAME
   // const region = import.meta.env.VITE_REGION
@@ -40,9 +41,13 @@ export default function Question() {
   // }
 
   // try {
-  //   setDefaultCode()
+  //   setDefaultCode("Write your code here")
   // } catch (error) {
-    
+  //   console.log(error);
+  //   toast({
+  //     title: "Error",
+  //     description: "Error in fetching default code",
+  //   });
   // }
 
 
@@ -51,8 +56,12 @@ export default function Question() {
   const questionsBucket = import.meta.env.VITE_QUESTIONS_BUCKET;
 
   async function fetchMD(){    
+    // const questionRef = await prisma.question.findFirst({problemName:question});
     const response = await axios.get(`https://${questionsBucket}.s3.ap-south-1.amazonaws.com/${question}/${question}.md`);    
+    // const MDData = await prisma.
+    console.log(response);
     setQuestionMD(response.data);
+
   }
 
   useEffect(()=>{
@@ -68,9 +77,9 @@ export default function Question() {
       <QPanel questionNumber={1} questionDesc={questionMD} questionTitle={question as string} questionTags={["graph"]} />
   </ResizablePanel>
   <ResizableHandle withHandle />
-  <ResizablePanel>
+  <ResizablePanel className='p-2'>
   <EditorPanel />
-    <TestCasePanel />
+    <TestCasePanel/>
   </ResizablePanel>
 </ResizablePanelGroup>
     </section>
